@@ -28,8 +28,4 @@ public class Courses {
 
     @Column(name = "description")
     private String descritpion;
-
-    @ManyToMany(mappedBy = "courses", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Students> students = new HashSet<>();
-
 }

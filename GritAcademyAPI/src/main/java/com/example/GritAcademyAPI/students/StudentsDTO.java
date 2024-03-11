@@ -1,5 +1,6 @@
 package com.example.GritAcademyAPI.students;
 
+import com.example.GritAcademyAPI.courses.CoursesDTO;
 import lombok.Data;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public class StudentsDTO {
     private String fname;
     private String lname;
     private String town;
-    List<StudentsDTO> courses;
+    List<CoursesDTO> courses;
 }
