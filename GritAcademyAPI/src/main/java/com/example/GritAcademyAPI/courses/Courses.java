@@ -1,14 +1,11 @@
 package com.example.GritAcademyAPI.courses;
 
-import com.example.GritAcademyAPI.students.Students;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity(name = "courses")
 @Table(name = "courses")
@@ -21,7 +18,7 @@ public class Courses {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
