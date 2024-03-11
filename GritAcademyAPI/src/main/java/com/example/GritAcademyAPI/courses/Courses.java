@@ -1,4 +1,35 @@
 package com.example.GritAcademyAPI.courses;
 
+import com.example.GritAcademyAPI.students.Students;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity(name = "courses")
+@Table(name = "courses")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Courses {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String descritpion;
+
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Students> students = new HashSet<>();
+
 }
