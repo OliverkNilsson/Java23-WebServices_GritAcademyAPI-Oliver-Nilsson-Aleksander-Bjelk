@@ -1,4 +1,4 @@
 package com.example.GritAcademyAPI.studentsCourses;
 
-public class StudentsService {
+public class StudentsCoursesService {
 }
