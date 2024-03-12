@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "students")
 @Table(name = "students")
@@ -32,6 +34,9 @@ public class Students {
     @Column(name = "town")
     private String town;
 
-    @OneToMany(mappedBy = "student")
-    private List<StudentsCourses> studentCourses;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "students_courses", joinColumns = @JoinColumn(name = "students_id"),
+            inverseJoinColumns = @JoinColumn(name = "courses_id"))
+    private Set<Courses> courses = new HashSet<>();
 }

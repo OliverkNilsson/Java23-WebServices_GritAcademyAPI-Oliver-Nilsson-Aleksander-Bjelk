@@ -1,5 +1,6 @@
 package com.example.GritAcademyAPI.studentsCourses;
 
+import com.example.GritAcademyAPI.courses.Courses;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
