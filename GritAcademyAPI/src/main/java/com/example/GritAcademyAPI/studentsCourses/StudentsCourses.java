@@ -20,8 +20,8 @@ public class StudentsCourses {
     private Long id;
 
     @Column(name = "students_id")
-    private Integer students_id;
+    private Long students_id;
 
     @Column(name = "courses_id")
-    private Integer courses_id;
+    private Long courses_id;
 }
