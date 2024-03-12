@@ -28,11 +28,12 @@ public class StudentsService {
     }
 
     public List<StudentsDTO> getCoursesForStudentByFname(String fname) {
-        Optional<Students> students = studentsRepository.findById(Integer.valueOf(fname)).map(student ->{
-            student.getCourses().size();
-            return student;
-        } );
+        List<Students> students = studentsRepository.findByFname(fname);
+        return students.stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
 
+    public List<StudentsDTO> getCoursesForStudentByLname(String lname) {
+        List<Students> students = studentsRepository.findByLname(lname);
         return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
