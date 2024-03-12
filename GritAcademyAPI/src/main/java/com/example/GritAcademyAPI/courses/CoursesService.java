@@ -20,7 +20,7 @@ public class CoursesService {
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
         dto.setName(courses.getName());
-        dto.setDescription(courses.getDescritpion());
+        dto.setDescription(courses.getDescription());
         return dto;
     }
 }

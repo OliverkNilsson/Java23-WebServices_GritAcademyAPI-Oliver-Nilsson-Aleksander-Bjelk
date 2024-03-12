@@ -1,10 +1,14 @@
 package com.example.GritAcademyAPI.students;
 
+import com.example.GritAcademyAPI.courses.Courses;
+import com.example.GritAcademyAPI.studentsCourses.StudentsCourses;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity(name = "students")
 @Table(name = "students")
@@ -28,4 +32,6 @@ public class Students {
     @Column(name = "town")
     private String town;
 
+    @OneToMany(mappedBy = "student")
+    private List<StudentsCourses> studentCourses;
 }
