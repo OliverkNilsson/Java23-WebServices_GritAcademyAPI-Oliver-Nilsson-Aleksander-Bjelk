@@ -4,9 +4,6 @@ import com.example.GritAcademyAPI.courses.Courses;
 import com.example.GritAcademyAPI.courses.CoursesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,6 +20,15 @@ public class StudentsService {
 
     public List<StudentsDTO> getCoursesForStudent(Long id) {
         Optional<Students> students = studentsRepository.findById(Math.toIntExact(id)).map(student ->{
+            student.getCourses().size();
+            return student;
+        } );
+
+        return students.stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
+    public List<StudentsDTO> getCoursesForStudentByFname(String fname) {
+        Optional<Students> students = studentsRepository.findById(Integer.valueOf(fname)).map(student ->{
             student.getCourses().size();
             return student;
         } );
