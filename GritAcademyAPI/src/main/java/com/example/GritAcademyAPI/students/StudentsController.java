@@ -31,7 +31,7 @@ public class StudentsController {
     }
 
     @GetMapping(value = "/students/{fname}/courses", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<StudentsDTO>> students(
+    public ResponseEntity<List<StudentsDTO>> studentsF(
             @PathVariable(value = "fname") String fname
     ){
         List<StudentsDTO> studentsDTO = studentsService.getCoursesForStudentByFname(fname);
@@ -39,7 +39,7 @@ public class StudentsController {
     }
 
     @GetMapping(value = "/students/{lname}/courses", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<StudentsDTO>> students(
+    public ResponseEntity<List<StudentsDTO>> studentsL(
             @PathVariable(value = "lname") String lname
     ){
         List<StudentsDTO> studentsDTO = studentsService.getCoursesForStudentByLname(lname);

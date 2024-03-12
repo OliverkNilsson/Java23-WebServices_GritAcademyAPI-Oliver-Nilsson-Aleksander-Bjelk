@@ -28,13 +28,13 @@ public class StudentsService {
     }
 
     public List<StudentsDTO> getCoursesForStudentByFname(String fname) {
-        List<Students> students = studentsRepository.findByFname(fname);
-        return students.stream().map(this::mapToDTO).collect(Collectors.toList());
+        List<Students> studentsF = studentsRepository.findByFname(fname);
+        return studentsF.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     public List<StudentsDTO> getCoursesForStudentByLname(String lname) {
-        List<Students> students = studentsRepository.findByLname(lname);
-        return students.stream().map(this::mapToDTO).collect(Collectors.toList());
+        List<Students> studentsL = studentsRepository.findByLname(lname);
+        return studentsL.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     private StudentsDTO mapToDTO(Students students){
