@@ -1,5 +1,7 @@
 package com.example.GritAcademyAPI.students;
 
+import com.example.GritAcademyAPI.courses.Courses;
+import com.example.GritAcademyAPI.courses.CoursesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,15 @@ public class StudentsService {
         dto.setFname(students.getFname());
         dto.setLname(students.getLname());
         dto.setTown(students.getTown());
+        dto.setCourses(students.getCourses().stream().map(this::mapToDTO).collect(Collectors.toList()));
+        return dto;
+    }
+
+    private CoursesDTO mapToDTO(Courses courses){
+        CoursesDTO dto = new CoursesDTO();
+        dto.setId(courses.getId());
+        dto.setName(courses.getName());
+        dto.setDescription(courses.getDescription());
         return dto;
     }
 }
