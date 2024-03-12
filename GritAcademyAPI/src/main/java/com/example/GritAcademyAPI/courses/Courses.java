@@ -30,6 +30,6 @@ public class Courses {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "vehicles")
+    @ManyToMany(mappedBy = "courses")
     private Set<Students> students = new HashSet<>();
 }

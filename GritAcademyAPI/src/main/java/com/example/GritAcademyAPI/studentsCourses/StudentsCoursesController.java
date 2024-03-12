@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 public class StudentsCoursesController {
+    /*
     @Autowired
     StudentsCoursesService studentsCoursesService;
 
@@ -32,4 +33,6 @@ public class StudentsCoursesController {
         List<CoursesDTO> coursesDTOs = studentsCoursesService.getCoursesForStudent(students_id);
         return new ResponseEntity<>(coursesDTOs, HttpStatus.OK);
     }
+
+     */
 }

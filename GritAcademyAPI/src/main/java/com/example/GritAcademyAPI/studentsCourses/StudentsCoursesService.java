@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentsCoursesService {
+    /*
     @Autowired
     StudentsCoursesRepository studentsCoursesRepository;
 
@@ -58,5 +59,9 @@ public class StudentsCoursesService {
         } else {
             return Collections.emptyList();
         }
+
+
     }
+
+ */
 }
