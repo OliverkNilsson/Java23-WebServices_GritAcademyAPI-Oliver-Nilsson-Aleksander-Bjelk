@@ -27,14 +27,9 @@ public class StudentsService {
         return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public List<StudentsDTO> getCoursesForStudentByFname(String fname) {
-        List<Students> studentsF = studentsRepository.findByFname(fname);
-        return studentsF.stream().map(this::mapToDTO).collect(Collectors.toList());
-    }
-
-    public List<StudentsDTO> getCoursesForStudentByLname(String lname) {
-        List<Students> studentsL = studentsRepository.findByLname(lname);
-        return studentsL.stream().map(this::mapToDTO).collect(Collectors.toList());
+    public List<StudentsDTO> getCoursesForStudentByFnameOrLnameOrTown(String name) {
+        List<Students> students = studentsRepository.findByFnameOrLnameOrTown(name, name, name);
+        return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     private StudentsDTO mapToDTO(Students students){
