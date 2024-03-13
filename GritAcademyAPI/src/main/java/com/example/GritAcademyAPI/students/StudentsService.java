@@ -15,7 +15,7 @@ public class StudentsService {
     StudentsRepository studentsRepository;
 
     public List<StudentsDTO> getAllStudents(){
-       return studentsRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+       return studentsRepository.findAll().stream().map(this::studentsMapToDTO).collect(Collectors.toList());
     }
 
     public List<StudentsDTO> getCoursesForStudent(Long id) {
@@ -44,9 +44,16 @@ public class StudentsService {
         dto.setFname(students.getFname());
         dto.setLname(students.getLname());
         dto.setTown(students.getTown());
-        dto.setStudents_id(students.getId());
-        dto.setCourses_id(students.getId());
         dto.setCourses(students.getCourses().stream().map(this::mapToDTO).collect(Collectors.toList()));
+        return dto;
+    }
+
+    private StudentsDTO studentsMapToDTO(Students students){
+        StudentsDTO dto = new StudentsDTO();
+        dto.setId(students.getId());
+        dto.setFname(students.getFname());
+        dto.setLname(students.getLname());
+        dto.setTown(students.getTown());
         return dto;
     }
 
