@@ -1,7 +1,6 @@
 package com.example.GritAcademyAPI.students;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,5 +8,6 @@ import java.util.List;
 @Repository
 public interface StudentsRepository extends JpaRepository<Students, Integer> {
 
+    //till för att hantera om det är förnamn, efternamn eller stad som söks
     List<Students> findByFnameOrLnameOrTown(String fname, String lname, String town);
 }
