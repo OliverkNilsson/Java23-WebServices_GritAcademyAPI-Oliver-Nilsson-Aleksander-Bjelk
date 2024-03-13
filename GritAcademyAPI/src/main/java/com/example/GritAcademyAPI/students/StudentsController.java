@@ -1,5 +1,6 @@
 package com.example.GritAcademyAPI.students;
 
+import com.example.GritAcademyAPI.courses.CoursesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,5 +38,11 @@ public class StudentsController {
             studentsDTO = studentsService.getCoursesForStudentByFnameOrLnameOrTown(identifier);
         }
         return new ResponseEntity<>(studentsDTO, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/studentsCourses", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<StudentsDTO>> studentsCourses() {
+        List<StudentsDTO> allStudentsCourses = studentsService.getAllStudentsCourses();
+        return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
     }
 }

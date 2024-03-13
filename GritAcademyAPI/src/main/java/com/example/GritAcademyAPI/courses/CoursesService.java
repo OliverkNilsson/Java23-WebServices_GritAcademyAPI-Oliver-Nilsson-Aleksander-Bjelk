@@ -47,7 +47,9 @@ public class CoursesService {
         List<Courses> courses = coursesRepository.findByDescriptionContaining(keyword);
         return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
-/*
+
+
+    /*
     private CoursesDTO mapToDTOWithStudents(Courses courses){
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
@@ -67,7 +69,8 @@ public class CoursesService {
         return dto;
     }
 
-    //länkad till mapToDTOWithStudents
+
+
     private StudentsDTO mapStudentToDTO(Students student) {
         StudentsDTO dto = new StudentsDTO();
         dto.setId(student.getId());

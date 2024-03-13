@@ -19,7 +19,7 @@ public class StudentsService {
     }
 
     public List<StudentsDTO> getCoursesForStudent(Long id) {
-        Optional<Students> students = studentsRepository.findById(Math.toIntExact(id)).map(student ->{
+        Optional<Students> students = studentsRepository.findById(id).map(student ->{
             student.getCourses().size();
             return student;
         } );
@@ -32,12 +32,20 @@ public class StudentsService {
         return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+    public List<StudentsDTO> getAllStudentsCourses() {
+        return studentsRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
+
+
     private StudentsDTO mapToDTO(Students students){
         StudentsDTO dto = new StudentsDTO();
         dto.setId(students.getId());
         dto.setFname(students.getFname());
         dto.setLname(students.getLname());
         dto.setTown(students.getTown());
+        dto.setStudents_id(students.getId());
+        dto.setCourses_id(students.getId());
         dto.setCourses(students.getCourses().stream().map(this::mapToDTO).collect(Collectors.toList()));
         return dto;
     }

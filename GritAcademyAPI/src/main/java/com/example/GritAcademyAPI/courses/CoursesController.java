@@ -26,6 +26,15 @@ public class CoursesController {
     }
 
 
+    //Söker  efter kurser med givet namn
+    @GetMapping(value = "/courses/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CoursesDTO>> coursesByName(@PathVariable(value = "name") String name) {
+        List<CoursesDTO> courses = coursesService.getCoursesName(name);
+
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+
     //Listar alla studenter i en kurs när sökningen är efter: kursnamnn
     @GetMapping(value = "/courses/{name}/students", produces = MediaType.APPLICATION_JSON_VALUE)
 
@@ -34,14 +43,6 @@ public class CoursesController {
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
-
-    //Söker  efter kurser med givet namn
-    @GetMapping(value = "/courses/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CoursesDTO>> coursesByName(@PathVariable(value = "name") String name) {
-        List<CoursesDTO> courses = coursesService.getCoursesName(name);
-
-        return new ResponseEntity<>(courses, HttpStatus.OK);
-    }
 
     //Söker efter kurser som innehåller givet ord från namnet, tex java som också ger avancerad java
     @GetMapping(value = "/courses/contains/{keyword}", produces = MediaType.APPLICATION_JSON_VALUE)
