@@ -11,5 +11,9 @@ public class StudentsDTO {
     private String fname;
     private String lname;
     private String town;
+
+    private Long students_id;
+    private Long courses_id;
+
     List<CoursesDTO> courses;
 }
