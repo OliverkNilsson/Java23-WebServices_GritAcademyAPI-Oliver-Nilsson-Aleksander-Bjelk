@@ -32,7 +32,7 @@ public class CoursesService {
     //kurs sökning med namn och får studenter med till
     public List<CoursesDTO> getCoursesNameAndStudents(String name) {
         List<Courses> courses = coursesRepository.findByName(name);
-        return courses.stream().map(this::mapToDTOWithStudents).collect(Collectors.toList());
+        return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
 
@@ -47,7 +47,7 @@ public class CoursesService {
         List<Courses> courses = coursesRepository.findByDescriptionContaining(keyword);
         return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
-
+/*
     private CoursesDTO mapToDTOWithStudents(Courses courses){
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
@@ -57,12 +57,13 @@ public class CoursesService {
         return dto;
     }
 
-
+ */
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
         dto.setName(courses.getName());
         dto.setDescription(courses.getDescription());
+        dto.setStudents(courses.getStudents().stream().map(this::mapStudentToDTO).collect(Collectors.toList())); //länkad till studentsDTO
         return dto;
     }
 
