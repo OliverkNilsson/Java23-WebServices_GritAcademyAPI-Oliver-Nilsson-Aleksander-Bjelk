@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 // CoursesService.java
@@ -18,7 +19,7 @@ public class CoursesService {
 
     //alla kurser
     public List<CoursesDTO> getAllCourses(){
-        return coursesRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+        return coursesRepository.findAll().stream().map(this::coursesMapToDTO).collect(Collectors.toList());
     }
 
 
@@ -49,34 +50,29 @@ public class CoursesService {
     }
 
 
-    /*
-    private CoursesDTO mapToDTOWithStudents(Courses courses){
-        CoursesDTO dto = new CoursesDTO();
-        dto.setId(courses.getId());
-        dto.setName(courses.getName());
-        dto.setDescription(courses.getDescription());
-        dto.setStudents(courses.getStudents().stream().map(this::mapStudentToDTO).collect(Collectors.toList())); //länkad till studentsDTO
-        return dto;
-    }
-
- */
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
         dto.setName(courses.getName());
         dto.setDescription(courses.getDescription());
-        dto.setStudents(courses.getStudents().stream().map(this::mapStudentToDTO).collect(Collectors.toList())); //länkad till studentsDTO
+        dto.setStudents(courses.getStudents().stream().map(this::mapToDTO).collect(Collectors.toList())); //länkad till studentsDTO
         return dto;
     }
 
+    private CoursesDTO coursesMapToDTO(Courses courses) {
+        CoursesDTO dto = new CoursesDTO();
+        dto.setId(courses.getId());
+        dto.setName(courses.getName());
+        dto.setDescription(courses.getDescription());
+        return dto;
+    }
 
-
-    private StudentsDTO mapStudentToDTO(Students student) {
+    private StudentsDTO mapToDTO(Students students){
         StudentsDTO dto = new StudentsDTO();
-        dto.setId(student.getId());
-        dto.setFname(student.getFname());
-        dto.setLname(student.getLname());
-        dto.setTown(student.getTown());
+        dto.setId(students.getId());
+        dto.setFname(students.getFname());
+        dto.setLname(students.getLname());
+        dto.setTown(students.getTown());
         return dto;
     }
 

@@ -1,5 +1,6 @@
 package com.example.GritAcademyAPI.courses;
 
+import com.example.GritAcademyAPI.students.Students;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
