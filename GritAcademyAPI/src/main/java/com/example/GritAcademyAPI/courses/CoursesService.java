@@ -40,13 +40,13 @@ public class CoursesService {
     //visar kurser som innehåller samma namn/bokstäver tex java eller ja ger både java och avancerad java
     public List<CoursesDTO> getCoursesContainsName(String keyword) {
         List<Courses> courses = coursesRepository.findByNameContaining(keyword);
-        return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
+        return courses.stream().map(this::coursesMapToDTO).collect(Collectors.toList());
     }
 
     //letar efter text i description och ger kurser som har den texten i sin description
     public List<CoursesDTO> getCoursesContainsDescriptions(String keyword) {
         List<Courses> courses = coursesRepository.findByDescriptionContaining(keyword);
-        return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
+        return courses.stream().map(this::coursesMapToDTO).collect(Collectors.toList());
     }
 
 
