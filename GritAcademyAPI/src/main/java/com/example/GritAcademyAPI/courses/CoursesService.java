@@ -49,6 +49,10 @@ public class CoursesService {
         return courses.stream().map(this::coursesMapToDTO).collect(Collectors.toList());
     }
 
+    public Courses saveCourse(Courses course) {
+        return coursesRepository.save(course);
+    }
+
 
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
