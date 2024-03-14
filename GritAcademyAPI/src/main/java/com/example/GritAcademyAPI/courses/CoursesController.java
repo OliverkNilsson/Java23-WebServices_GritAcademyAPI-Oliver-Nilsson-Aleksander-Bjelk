@@ -67,8 +67,15 @@ public class CoursesController {
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
+    //lägger till en kurs genom jsp
+    @PostMapping(value = "/createCourseForm")
+    public ResponseEntity<Courses> createCourseForm(Courses course) {
+        course = coursesService.saveCourse(course);
+        return new ResponseEntity<>(course, HttpStatus.CREATED);
+    }
 
 
+    //tar bort en kurs genom jsp
     @PostMapping(value = "/removeCourseForm")
     public ResponseEntity<List<CoursesDTO>> removeCourseForm(
             @RequestParam(value = "id") Long id
@@ -77,9 +84,4 @@ public class CoursesController {
         return new ResponseEntity<>(coursesService.getAllCourses(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/createCourseForm")
-    public ResponseEntity<Courses> createCourseForm(Courses course) {
-        course = coursesService.saveCourse(course);
-        return new ResponseEntity<>(course, HttpStatus.CREATED);
-    }
 }
