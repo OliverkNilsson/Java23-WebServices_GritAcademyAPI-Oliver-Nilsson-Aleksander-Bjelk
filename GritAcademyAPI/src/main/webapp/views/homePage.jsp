@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Adding and deleting students</h1>
+<h1>Add, delete students and courses</h1>
 
 
 
