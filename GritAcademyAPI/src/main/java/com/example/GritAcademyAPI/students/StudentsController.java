@@ -54,8 +54,9 @@ public class StudentsController {
             return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
         }
 
-        @PostMapping(name = "/createStudentForm")
+        @PostMapping(value = "/createStudentForm")
         public ResponseEntity<Students> createStudentForm(Students student) {
+            System.out.println(student);
             student = studentsService.saveStudent(student);
             return new ResponseEntity<>(student, HttpStatus.CREATED);
         }
