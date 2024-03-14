@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 // CoursesController.java
 @RestController
@@ -37,9 +38,14 @@ public class CoursesController {
 
     //Listar alla studenter i en kurs när sökningen är efter: kursnamnn
     @GetMapping(value = "/courses/{name}/students", produces = MediaType.APPLICATION_JSON_VALUE)
-
     public ResponseEntity<List<CoursesDTO>> coursesStudents(@PathVariable(value = "name") String name) {
         List<CoursesDTO> courses = coursesService.getCoursesNameAndStudents(name);
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+    // Listar en kurs med specifikt id med dess studenter
+    @GetMapping(value = "/course/{id}/students", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CoursesDTO>> coursesStudents(@PathVariable(value = "id") Long id) {
+        List<CoursesDTO> courses = coursesService.getCoursesNameAndStudentsById(id);
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 

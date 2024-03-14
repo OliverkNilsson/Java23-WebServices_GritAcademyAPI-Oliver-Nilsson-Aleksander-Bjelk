@@ -36,6 +36,15 @@ public class CoursesService {
         return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+    public List<CoursesDTO> getCoursesNameAndStudentsById(Long id) {
+        Optional<Courses> courses = coursesRepository.findById(id).map(course ->{
+            course.getStudents().size();
+            return course;
+        } );
+
+        return courses.stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
 
     //visar kurser som innehåller samma namn/bokstäver tex java eller ja ger både java och avancerad java
     public List<CoursesDTO> getCoursesContainsName(String keyword) {
