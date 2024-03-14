@@ -3,6 +3,8 @@ package com.example.GritAcademyAPI.courses;
 import com.example.GritAcademyAPI.students.Students;
 import com.example.GritAcademyAPI.students.StudentsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,14 +51,17 @@ public class CoursesService {
         return courses.stream().map(this::coursesMapToDTO).collect(Collectors.toList());
     }
 
+
+    //spara den tllagada kursen genom jsp
     public Courses saveCourse(Courses course) {
         return coursesRepository.save(course);
     }
 
 
-
+    //tar bort kursen (genom id)
     public void removeCourseById(Long id) {coursesRepository.deleteById(id);
     }
+
 
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
