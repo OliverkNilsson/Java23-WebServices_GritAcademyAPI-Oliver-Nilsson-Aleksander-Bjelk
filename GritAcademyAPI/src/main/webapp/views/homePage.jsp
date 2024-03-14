@@ -15,10 +15,10 @@
 <div class="container">
     <div class="students" >
 <form id="createStudent" action="/createStudentForm" method="POST">
-    <label for="fName" >First name: </label>
-    <input type="text" id="fName" name="fName" required>    <br>
-    <label for="lName">Last name: </label>
-    <input type="text" id="lName" name="lName" required>    <br>
+    <label for="fname" >First name: </label>
+    <input type="text" id="fname" name="fname" required>    <br>
+    <label for="lname">Last name: </label>
+    <input type="text" id="lname" name="lname" required>    <br>
     <label for="town">Town: </label>
     <input type="text" id="town" name="town" required>    <br>
 
@@ -29,7 +29,7 @@
 <br>
 
 <br>
-<form action="removeStudentForm" method="POST">
+<form action="/removeStudentForm" method="POST">
     student id: <input type="text" name="id" required>
     <br>
     <br>

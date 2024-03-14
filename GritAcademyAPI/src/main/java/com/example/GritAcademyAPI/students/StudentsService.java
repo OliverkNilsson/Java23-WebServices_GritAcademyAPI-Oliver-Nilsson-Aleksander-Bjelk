@@ -40,6 +40,10 @@ public class StudentsService {
         return studentsRepository.save(students);
     }
 
+    public void removeStudentById(Long id) {
+        studentsRepository.deleteById(id);
+    }
+
 
 
     private StudentsDTO mapToDTO(Students students){
