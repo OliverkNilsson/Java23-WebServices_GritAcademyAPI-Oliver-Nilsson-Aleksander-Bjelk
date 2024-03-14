@@ -9,6 +9,9 @@
 <body>
 
 <h1>Adding and deleting students</h1>
+
+
+
 <div class="container">
     <div class="students" >
 <form id="createStudent" action="/createStudentForm" method="POST">
@@ -37,8 +40,10 @@
 <br>
 <button class="btn" onclick=location.href='/students'>SHOW ALL STUDENTS</button>
 <br>
-
 <br>
+
+
+
 </div>
 <div class="courses">
 <form id="createCourse" action="/createCourseForm" method="POST">
@@ -68,10 +73,14 @@
 
     <br>
 </div>
+</div>
+
+
+
     <div class="buttonSC">
 <button class="btn"  onclick=location.href='/studentsCourses'>SHOW ALL COURSES FOR STUDENTS</button>
     </div>
-</div>
+
 
 </body>
 </html>
