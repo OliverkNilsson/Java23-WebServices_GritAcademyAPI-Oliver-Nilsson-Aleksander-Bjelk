@@ -3,6 +3,7 @@ package com.example.GritAcademyAPI.students;
 import com.example.GritAcademyAPI.courses.CoursesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,8 @@ public class StudentsController {
         List<StudentsDTO> studentsDTO;
         if (identifier.matches("\\d+")) { //regexen står för om en matchar en eller flera siffror
             Long id = Long.parseLong(identifier);
+            if (id < 0){
+                return new ResponseEntity<>( HttpStatus.FORBIDDEN);}
             studentsDTO = studentsService.getCoursesForStudent(id);
         } else {
             studentsDTO = studentsService.getCoursesForStudentByFnameOrLnameOrTown(identifier);
