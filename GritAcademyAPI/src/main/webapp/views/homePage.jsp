@@ -11,22 +11,13 @@
 <h1>Demo JSP webpage showing rest endpoints</h1>
 <p>${message}</p>
 <form id="createStudent" action="/createStudentForm" method="POST">
-    <label for="fName" >fName</label>
+    <label for="fName" >First name: </label>
     <input type="text" id="fName" name="fName" required>    <br>
-    <label for="lName">lName</label>
+    <label for="lName">Last name: </label>
     <input type="text" id="lName" name="lName" required>    <br>
-    <label for="town">town</label>
+    <label for="town">Town: </label>
     <input type="text" id="town" name="town" required>    <br>
-    <label for="hobby">hobby</label>
-    <input type="text" id="hobby" name="hobby" required>    <br>
-    <label for="email">email</label>
-    <input type="text" id="email" name="email" required>    <br>
-    <label for="phone">phone</label>
-    <input type="text" id="phone" name="phone" required>    <br>
-    <label for="username">username</label>
-    <input type="text" id="username" name="username" required>    <br>
-    <label for="password">password</label>
-    <input type="text" id="password" name="password" required>    <br>
+
     <br>
     <input class="btn" type="submit" value="CREATE_STUDENT"><br>
 
