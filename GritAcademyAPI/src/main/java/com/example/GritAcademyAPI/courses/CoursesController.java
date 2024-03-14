@@ -27,12 +27,27 @@ public class CoursesController {
         List<CoursesDTO> allCourses = coursesService.getAllCourses();
         return new ResponseEntity<>(allCourses, HttpStatus.OK);
     }
-    //Söker  efter kurser med givet namn
-    @GetMapping(value = "/courses/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+
+
+    //Söker  efter kurser med givet namn (och exception om man skriver ett namn som inte finns)
+    @GetMapping("/courses/{name}")
     public ResponseEntity<List<CoursesDTO>> coursesByName(@PathVariable(value = "name") String name) {
         List<CoursesDTO> courses = coursesService.getCoursesName(name);
-
+        if (courses.isEmpty()) {
+            throw new ResourceNotFoundException("Course not found with name: " + name);
+        }
         return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+
+    //så man kan hämta en kurs efter id (och exception om man skriver ett id som inte finns)
+    @GetMapping("/courses/id/{id}")
+    public ResponseEntity<CoursesDTO> courseById(@PathVariable(value = "id") Long id) {
+        CoursesDTO course = coursesService.getCourseById(id);
+        if (course == null) {
+            throw new ResourceNotFoundException("Course not found with id: " + id);
+        }
+        return new ResponseEntity<>(course, HttpStatus.OK);
     }
 
 
@@ -42,6 +57,8 @@ public class CoursesController {
         List<CoursesDTO> courses = coursesService.getCoursesNameAndStudents(name);
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
+
+
     // Listar en kurs med specifikt id med dess studenter
     @GetMapping(value = "/course/{id}/students", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CoursesDTO>> coursesStudents(@PathVariable(value = "id") Long id) {

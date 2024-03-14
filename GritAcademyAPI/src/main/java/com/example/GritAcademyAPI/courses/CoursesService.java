@@ -71,6 +71,11 @@ public class CoursesService {
     public void removeCourseById(Long id) {coursesRepository.deleteById(id);
     }
 
+    public CoursesDTO getCourseById(Long id) {
+        Optional<Courses> course = coursesRepository.findById(id);
+        return course.map(this::mapToDTO).orElse(null);
+    }
+
 
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
