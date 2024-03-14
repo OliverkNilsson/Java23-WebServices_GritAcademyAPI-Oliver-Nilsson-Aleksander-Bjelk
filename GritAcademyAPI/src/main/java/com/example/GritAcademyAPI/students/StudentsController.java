@@ -1,9 +1,7 @@
 package com.example.GritAcademyAPI.students;
 
-import com.example.GritAcademyAPI.courses.CoursesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +29,14 @@ public class StudentsController {
     public ResponseEntity<List<StudentsDTO>> getStudentCourses(
             @PathVariable(value = "identifier") String identifier
     ){
+        long id = Long.parseLong(identifier);
         List<StudentsDTO> studentsDTO;
+
+        if (id < 0) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+        }
+
         if (identifier.matches("\\d+")) { //regexen står för om en matchar en eller flera siffror
-            Long id = Long.parseLong(identifier);
-            if (id < 0){
-                return new ResponseEntity<>( HttpStatus.FORBIDDEN);}
             studentsDTO = studentsService.getCoursesForStudent(id);
         } else {
             studentsDTO = studentsService.getCoursesForStudentByFnameOrLnameOrTown(identifier);
