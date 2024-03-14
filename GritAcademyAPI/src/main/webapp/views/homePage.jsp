@@ -3,13 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HomE Page</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Demo JSP webpage showing rest endpoints</h1>
-<p>${message}</p>
+<h1>Adding and deleting students</h1>
+<div class="container">
+    <div class="students" >
 <form id="createStudent" action="/createStudentForm" method="POST">
     <label for="fName" >First name: </label>
     <input type="text" id="fName" name="fName" required>    <br>
@@ -19,26 +20,58 @@
     <input type="text" id="town" name="town" required>    <br>
 
     <br>
-    <input class="btn" type="submit" value="CREATE_STUDENT"><br>
+    <input class="btn" type="submit" value="CREATE STUDENT"><br>
 
 </form>
 <br>
-<hr>
+
 <br>
 <form action="removeStudentForm" method="POST">
-    id <input type="text" name="id" required>
+    student id: <input type="text" name="id" required>
     <br>
     <br>
-    <input class="btn" type="submit" value="REMOVE_STUDENT">
+    <input class="btn" type="submit" value="REMOVE STUDENT">
 </form>
 <br>
-<hr>
+
 <br>
 <button class="btn" onclick=location.href='/students'>SHOW ALL STUDENTS</button>
 <br>
-<hr>
+
 <br>
-<button class="btn" onclick=location.href='/students/1/courses'>SHOW ALL COURSES FOR STUDENTS 1</button>
+</div>
+<div class="courses">
+<form id="createCourse" action="/createCourseForm" method="POST">
+    <label for="name" >Course name: </label>
+    <input type="text" id="name" name="name" required>    <br>
+    <label for="description">Description: </label>
+    <input type="text" id="description" name="description" required>    <br>
+    <br>
+    <input class="btn" type="submit" value="CREATE STUDENT"><br>
+
+</form>
+<br>
+
+
+<br>
+<form action="removeCourseForm" method="POST">
+   course id: <input type="text" name="id" required>
+    <br>
+    <br>
+    <input class="btn" type="submit" value="REMOVE COURSE">
+</form>
+    <br>
+
+    <br>
+    <button class="btn" onclick=location.href='/courses'>SHOW ALL COURSES</button>
+    <br>
+
+    <br>
+</div>
+    <div class="buttonSC">
+<button class="btn"  onclick=location.href='/studentsCourses'>SHOW ALL COURSES FOR STUDENTS</button>
+    </div>
+</div>
 
 </body>
 </html>
