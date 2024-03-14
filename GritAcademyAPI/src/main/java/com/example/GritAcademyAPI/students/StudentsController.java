@@ -18,7 +18,7 @@ public class StudentsController {
 
     //Listar alla studenter
     @GetMapping(value = "/students", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<StudentsDTO>> getAllStudents(){
+    public ResponseEntity<List<StudentsDTO>> getAllStudents() {
         List<StudentsDTO> studentsDTO = studentsService.getAllStudents();
         return new ResponseEntity<>(studentsDTO, HttpStatus.OK);
     }
@@ -28,25 +28,28 @@ public class StudentsController {
     @GetMapping(value = "/students/{identifier}/courses", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<StudentsDTO>> getStudentCourses(
             @PathVariable(value = "identifier") String identifier
-    ){
-        long id = Long.parseLong(identifier);
+    ) {
+
         List<StudentsDTO> studentsDTO;
 
-        if (id < 0) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-
         if (identifier.matches("\\d+")) { //regexen står för om en matchar en eller flera siffror
+
+            long id = Long.parseLong(identifier);
             studentsDTO = studentsService.getCoursesForStudent(id);
+
+        } else if (identifier.matches("-\\d+")) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+
         } else {
             studentsDTO = studentsService.getCoursesForStudentByFnameOrLnameOrTown(identifier);
         }
-        return new ResponseEntity<>(studentsDTO, HttpStatus.OK);
-    }
+            return new ResponseEntity<>(studentsDTO, HttpStatus.OK);
+        }
 
-    @GetMapping(value = "/studentsCourses", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<StudentsDTO>> studentsCourses() {
-        List<StudentsDTO> allStudentsCourses = studentsService.getAllStudentsCourses();
-        return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
+
+        @GetMapping(value = "/studentsCourses", produces = MediaType.APPLICATION_JSON_VALUE)
+        public ResponseEntity<List<StudentsDTO>> studentsCourses () {
+            List<StudentsDTO> allStudentsCourses = studentsService.getAllStudentsCourses();
+            return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
+        }
     }
-}
