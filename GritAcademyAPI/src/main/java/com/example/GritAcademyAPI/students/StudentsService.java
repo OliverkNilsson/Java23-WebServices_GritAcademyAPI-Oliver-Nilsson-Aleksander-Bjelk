@@ -36,6 +36,10 @@ public class StudentsService {
         return studentsRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+    public Students saveStudent(Students students) {
+        return studentsRepository.save(students);
+    }
+
 
 
     private StudentsDTO mapToDTO(Students students){

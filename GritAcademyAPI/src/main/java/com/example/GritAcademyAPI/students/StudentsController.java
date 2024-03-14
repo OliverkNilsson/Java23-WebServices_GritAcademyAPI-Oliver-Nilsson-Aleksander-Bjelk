@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -51,5 +52,11 @@ public class StudentsController {
         public ResponseEntity<List<StudentsDTO>> studentsCourses () {
             List<StudentsDTO> allStudentsCourses = studentsService.getAllStudentsCourses();
             return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
+        }
+
+        @PostMapping(name = "/createStudentForm")
+        public ResponseEntity<Students> createStudentForm(Students student) {
+            student = studentsService.saveStudent(student);
+            return new ResponseEntity<>(student, HttpStatus.CREATED);
         }
     }
