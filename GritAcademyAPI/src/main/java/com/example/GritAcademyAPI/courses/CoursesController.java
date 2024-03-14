@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,12 +55,23 @@ public class CoursesController {
 
     //Söker efter kurser som inneäller givet ord från descriptions
     @GetMapping(value = "/courses/description-contains/{keyword}", produces = MediaType.APPLICATION_JSON_VALUE)
+
     public ResponseEntity<List<CoursesDTO>> coursesByDescriptionContains(@PathVariable(value = "keyword") String keyword) {
         List<CoursesDTO> courses = coursesService.getCoursesContainsDescriptions(keyword);
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
-    @PostMapping(value = "createCourseForm")
+
+
+    @PostMapping(value = "/removeCourseForm")
+    public ResponseEntity<List<CoursesDTO>> removeCourseForm(
+            @RequestParam(value = "id") Long id
+    ) {
+        coursesService.removeCourseById(id);
+        return new ResponseEntity<>(coursesService.getAllCourses(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/createCourseForm")
     public ResponseEntity<Courses> createCourseForm(Courses course) {
         course = coursesService.saveCourse(course);
         return new ResponseEntity<>(course, HttpStatus.CREATED);

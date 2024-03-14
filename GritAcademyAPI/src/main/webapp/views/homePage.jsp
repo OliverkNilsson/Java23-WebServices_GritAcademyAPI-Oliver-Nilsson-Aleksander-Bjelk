@@ -52,7 +52,7 @@
     <label for="description">Description: </label>
     <input type="text" id="description" name="description" required>    <br>
     <br>
-    <input class="btn" type="submit" value="CREATE STUDENT"><br>
+    <input class="btn" type="submit" value="CREATE COURSE"><br>
 
 </form>
 <br>

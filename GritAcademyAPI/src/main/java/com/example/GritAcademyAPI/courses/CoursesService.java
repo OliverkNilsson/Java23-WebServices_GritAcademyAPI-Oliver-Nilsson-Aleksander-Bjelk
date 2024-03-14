@@ -54,6 +54,10 @@ public class CoursesService {
     }
 
 
+
+    public void removeCourseById(Long id) {coursesRepository.deleteById(id);
+    }
+
     private CoursesDTO mapToDTO(Courses courses){
         CoursesDTO dto = new CoursesDTO();
         dto.setId(courses.getId());
