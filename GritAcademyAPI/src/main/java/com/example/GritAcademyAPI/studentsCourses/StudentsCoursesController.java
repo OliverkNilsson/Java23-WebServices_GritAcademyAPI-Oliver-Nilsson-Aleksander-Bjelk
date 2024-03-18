@@ -1,5 +1,6 @@
 package com.example.GritAcademyAPI.studentsCourses;
 
+import com.example.GritAcademyAPI.students.Students;
 import com.example.GritAcademyAPI.students.StudentsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,13 @@ public class StudentsCoursesController {
 
     @Autowired
     StudentsCoursesService studentsCoursesService;
+
+    @PostMapping(value = "/associateStudentCourse")
+    public ResponseEntity<StudentsCourses> createStudentForm(StudentsCourses studentsCourses) {
+        studentsCourses = studentsCoursesService.saveStudentsCourses(studentsCourses);
+        return new ResponseEntity<>(studentsCourses, HttpStatus.CREATED);
+    }
+
     @PostMapping(value = "/removeAssociateStudentCourse")
     public ResponseEntity<List<StudentsCoursesDTO>> removeAssociateStudentCourse(
             @RequestParam(value = "id") Long id

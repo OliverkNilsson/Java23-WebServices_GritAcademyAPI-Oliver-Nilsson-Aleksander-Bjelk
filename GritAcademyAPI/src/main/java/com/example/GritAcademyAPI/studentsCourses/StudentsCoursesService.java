@@ -28,4 +28,8 @@ public class StudentsCoursesService {
         dto.setCourses_id(studentsCourses.getCourses_id());
         return dto;
     }
+
+    public StudentsCourses saveStudentsCourses(StudentsCourses studentsCourses) {
+        return studentsCoursesRepository.save(studentsCourses);
+    }
 }

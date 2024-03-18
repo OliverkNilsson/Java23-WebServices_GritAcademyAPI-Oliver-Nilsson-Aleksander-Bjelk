@@ -78,11 +78,11 @@ public class CoursesController {
 
     //Söker efter kurser som inneäller givet ord från descriptions
     @GetMapping(value = "/courses/description-contains/{keyword}", produces = MediaType.APPLICATION_JSON_VALUE)
-
     public ResponseEntity<List<CoursesDTO>> coursesByDescriptionContains(@PathVariable(value = "keyword") String keyword) {
         List<CoursesDTO> courses = coursesService.getCoursesContainsDescriptions(keyword);
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
+
 
     //lägger till en kurs genom jsp
     @PostMapping(value = "/createCourseForm")
