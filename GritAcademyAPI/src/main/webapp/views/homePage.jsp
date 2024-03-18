@@ -78,6 +78,15 @@
 
 
     <div class="buttonSC">
+        <form id="associateStudentCourse" action="/associateStudentCourse" method="POST">
+            <label for="students_id" >Student id: </label>
+            <input type="text" id="students_id" name="students_id" required>    <br>
+            <label for="courses_id">Course id: </label>
+            <input type="text" id="courses_id" name="courses_id" required>    <br>
+            <br>
+            <input class="btn" type="submit" value="CREATE ASSOCIATION"><br>
+
+        </form>
 <button class="btn"  onclick=location.href='/studentsCourses'>SHOW ALL COURSES FOR STUDENTS</button>
     </div>
 
