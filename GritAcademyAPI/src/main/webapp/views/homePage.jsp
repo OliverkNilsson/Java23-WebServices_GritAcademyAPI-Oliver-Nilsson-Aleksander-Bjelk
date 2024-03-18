@@ -87,6 +87,14 @@
             <input class="btn" type="submit" value="CREATE ASSOCIATION"><br>
 
         </form>
+
+        <form id="removeAssociateStudentCourse" action="/removeAssociateStudentCourse" method="POST">
+            StudentsCourses id: <input type="text" name="id" required>
+            <br>
+            <br>
+            <input class="btn" type="submit" value="REMOVE ASSOCIATION">
+
+        </form>
 <button class="btn"  onclick=location.href='/studentsCourses'>SHOW ALL COURSES FOR STUDENTS</button>
     </div>
 
