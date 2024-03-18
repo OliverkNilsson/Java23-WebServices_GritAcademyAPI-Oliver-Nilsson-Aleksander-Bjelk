@@ -14,12 +14,24 @@ public class StudentsCoursesService {
     @Autowired
     StudentsCoursesRepository studentsCoursesRepository;
 
+
+    //Hämtar alla associationer
     public List<StudentsCoursesDTO> getAllAssociations(){
         return studentsCoursesRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
+
+
+    //Tar bort association genom id
     public void removeAssociationById(Long id) {
         studentsCoursesRepository.deleteById(id);
     }
+
+
+    //Sparar associationen
+    public StudentsCourses saveStudentsCourses(StudentsCourses studentsCourses) {
+        return studentsCoursesRepository.save(studentsCourses);
+    }
+
 
     private StudentsCoursesDTO mapToDTO(StudentsCourses studentsCourses){
         StudentsCoursesDTO dto = new StudentsCoursesDTO();
@@ -27,9 +39,5 @@ public class StudentsCoursesService {
         dto.setStudents_id(studentsCourses.getStudents_id());
         dto.setCourses_id(studentsCourses.getCourses_id());
         return dto;
-    }
-
-    public StudentsCourses saveStudentsCourses(StudentsCourses studentsCourses) {
-        return studentsCoursesRepository.save(studentsCourses);
     }
 }

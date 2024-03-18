@@ -46,18 +46,23 @@ public class StudentsController {
         }
 
 
+        //Visar alla relationer mellan studenter ocgh kurser
         @GetMapping(value = "/studentsCourses", produces = MediaType.APPLICATION_JSON_VALUE)
         public ResponseEntity<List<StudentsDTO>> studentsCourses () {
             List<StudentsDTO> allStudentsCourses = studentsService.getAllStudentsCourses();
             return new ResponseEntity<>(allStudentsCourses, HttpStatus.OK);
         }
 
+
+        //Används för att skapa en student genom ett formulär i homePage.jsp
         @PostMapping(value = "/createStudentForm")
         public ResponseEntity<Students> createStudentForm(Students student) {
             student = studentsService.saveStudent(student);
             return new ResponseEntity<>(student, HttpStatus.CREATED);
         }
 
+
+        //Används för att ta bort en student genom ett formulär i homePage.jsp
         @PostMapping(value = "/removeStudentForm")
         public ResponseEntity<List<StudentsDTO>> removeStudentForm(
                 @RequestParam(value = "id") Long id

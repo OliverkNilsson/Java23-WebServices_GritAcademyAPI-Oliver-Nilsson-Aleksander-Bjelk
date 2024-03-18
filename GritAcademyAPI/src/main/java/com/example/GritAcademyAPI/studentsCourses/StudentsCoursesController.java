@@ -17,13 +17,17 @@ public class StudentsCoursesController {
     @Autowired
     StudentsCoursesService studentsCoursesService;
 
+
+    //Associerar en student med en kurs
     @PostMapping(value = "/associateStudentCourse")
     public ResponseEntity<StudentsCourses> createStudentForm(StudentsCourses studentsCourses) {
         studentsCourses = studentsCoursesService.saveStudentsCourses(studentsCourses);
         return new ResponseEntity<>(studentsCourses, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/removeAssociateStudentCourse")
+
+    //tar bort en association med en student och en kurs.
+    @PostMapping(value = "/removeAssociationStudentCourse")
     public ResponseEntity<List<StudentsCoursesDTO>> removeAssociateStudentCourse(
             @RequestParam(value = "id") Long id
     ) {

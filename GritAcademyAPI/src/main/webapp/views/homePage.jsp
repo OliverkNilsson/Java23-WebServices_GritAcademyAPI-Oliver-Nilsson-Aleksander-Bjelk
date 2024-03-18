@@ -88,7 +88,7 @@
 
         </form>
 
-        <form id="removeAssociateStudentCourse" action="/removeAssociateStudentCourse" method="POST">
+        <form id="removeAssociateStudentCourse" action="/removeAssociationStudentCourse" method="POST">
             StudentsCourses id: <input type="text" name="id" required>
             <br>
             <br>

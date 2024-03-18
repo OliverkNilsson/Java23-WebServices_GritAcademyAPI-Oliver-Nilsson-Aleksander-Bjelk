@@ -14,10 +14,14 @@ public class StudentsService {
     @Autowired
     StudentsRepository studentsRepository;
 
+
+    //Hämtar alla studenter
     public List<StudentsDTO> getAllStudents(){
        return studentsRepository.findAll().stream().map(this::studentsMapToDTO).collect(Collectors.toList());
     }
 
+
+    //Hämtar kurser för en student genom id
     public List<StudentsDTO> getCoursesForStudent(Long id) {
         Optional<Students> students = studentsRepository.findById(id).map(student ->{
             student.getCourses().size();
@@ -27,23 +31,30 @@ public class StudentsService {
         return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+
+    //Hämtar kurser för en student genom förnman, efternamn eller ort.
     public List<StudentsDTO> getCoursesForStudentByFnameOrLnameOrTown(String name) {
         List<Students> students = studentsRepository.findByFnameOrLnameOrTown(name, name, name);
         return students.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+
+    //Hämtar alla kurser för studenter
     public List<StudentsDTO> getAllStudentsCourses() {
         return studentsRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
+
+    //Sparar studenter efter man lagt till en student.
     public Students saveStudent(Students students) {
         return studentsRepository.save(students);
     }
 
+
+    //Tar bort en student genom id
     public void removeStudentById(Long id) {
         studentsRepository.deleteById(id);
     }
-
 
 
     private StudentsDTO mapToDTO(Students students){
