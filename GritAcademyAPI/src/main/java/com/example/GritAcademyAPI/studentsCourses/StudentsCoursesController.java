@@ -16,11 +16,11 @@ public class StudentsCoursesController {
     @Autowired
     StudentsCoursesService studentsCoursesService;
     @PostMapping(value = "/removeAssociateStudentCourse")
-    public ResponseEntity<List<StudentsDTO>> removeAssociateStudentCourse(
+    public ResponseEntity<List<StudentsCoursesDTO>> removeAssociateStudentCourse(
             @RequestParam(value = "id") Long id
     ) {
         studentsCoursesService.removeAssociationById(id);
-        return new ResponseEntity<>(studentsCoursesService.getAllStudents(), HttpStatus.OK);
+        return new ResponseEntity<>(studentsCoursesService.getAllAssociations(), HttpStatus.OK);
     }
 
 }
